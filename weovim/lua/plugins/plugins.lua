@@ -29,6 +29,8 @@ vim.pack.add({
     { src = 'https://codeberg.org/andyg/leap.nvim' },
     { src = 'https://github.com/ggandor/flit.nvim' },
     { src = 'https://github.com/ThePrimeagen/harpoon', version = 'harpoon2' },
+    { src = "https://github.com/nvim-lualine/lualine.nvim" },
+    { src = "https://github.com/mvllow/modes.nvim" },
 })
 
 -- Defer plugin configs until plugins are loaded
@@ -41,4 +43,6 @@ vim.schedule(function()
     require("plugins.leap")
     require("plugins.flit")
     require("plugins.blink")
+    require("plugins.lualine")
+    require("plugins.modes")
 end)
