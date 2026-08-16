@@ -33,3 +33,11 @@ vim.api.nvim_create_autocmd("FileType", {
         end)
     end,
 })
+
+-- Format on save for Elixir
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = { "*.ex", "*.exs", "*.heex" },
+    callback = function()
+        vim.lsp.buf.format({ async = false })
+    end,
+})

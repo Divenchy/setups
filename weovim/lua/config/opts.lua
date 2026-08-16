@@ -38,3 +38,14 @@ opt.backup = false
 opt.undofile = true
 
 opt.inccommand = "split"
+
+vim.filetype.add({
+    extension = {
+        heex = "heex",
+        exs = "elixir",
+    },
+    pattern = {
+        [".*%.html%.heex"] = "heex",
+        [".*%.html%.eex"] = "eex",
+    },
+})

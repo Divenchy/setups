@@ -69,3 +69,11 @@ map("n", "<leader>w", ":w<CR>")
 -- Move selection
 map("v", "J", ":m '>+1<CR>gv=gv")
 map("v", "K", ":m '<-2<CR>gv=gv")
+
+-- IEx/Mix commands
+map("n", "<leader>Mi", ":!iex -S mix<CR>", { desc = "IEx with mix" })
+map("n", "<leader>Mt", ":!mix test<CR>", { desc = "Mix test" })
+map("n", "<leader>Mc", ":!mix compile<CR>", { desc = "Mix compile" })
+map("n", "<leader>Mf", ":!mix format<CR>", { desc = "Mix format" })
+map("n", "<leader>Md", ":!mix deps.get<CR>", { desc = "Mix deps.get" })
+map("n", "<leader>Mp", ":!mix phx.server<CR>", { desc = "Phoenix server" })

@@ -1,5 +1,5 @@
 ### PATH ###
-export PATH="$HOME/.config/bin:$HOME/.local/bin:$PATH:$PATH"
+export PATH="$HOME/.cargo/bin:$HOME/.config/bin:$HOME/.local/bin:$PATH:$PATH"
 
 ### SHELL VARS ###
 export EDITOR="nvim"
