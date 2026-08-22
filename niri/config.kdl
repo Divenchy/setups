@@ -1,5 +1,4 @@
-spawn-at-startup "foot"
-
+// input and monitor
 input {
     keyboard {
         xkb {
@@ -11,52 +10,161 @@ input {
         tap
         natural-scroll
     }
+
+    mouse {
+        accel-speed 0.5
+    }
+
+    focus-follows-mouse max-scroll-amount="50%"   // Some auto-scroll
 }
 
 output "eDP-1" {
-    scale 1.0
+    scale 0.9
 }
 
-binds {
-    Mod+Return { spawn "foot"; }
-    Mod+D { spawn "fuzzel"; }
-    Mod+Q { close-window; }
-    Mod+Shift+E { quit; }
-    
-    Mod+1 { focus-workspace 1; }
-    Mod+2 { focus-workspace 2; }
-    Mod+3 { focus-workspace 3; }
-    Mod+4 { focus-workspace 4; }
-    
-    Mod+Shift+1 { move-window-to-workspace 1; }
-    Mod+Shift+2 { move-window-to-workspace 2; }
-    Mod+Shift+3 { move-window-to-workspace 3; }
-    Mod+Shift+4 { move-window-to-workspace 4; }
-    
-    Mod+H { focus-column-left; }
-    Mod+J { focus-window-down; }
-    Mod+K { focus-window-up; }
-    Mod+L { focus-column-right; }
-    
-    Mod+Shift+H { move-column-left; }
-    Mod+Shift+J { move-window-down; }
-    Mod+Shift+K { move-window-up; }
-    Mod+Shift+L { move-column-right; }
-    
-    Mod+F { maximize-column; }
-    Mod+Shift+F { fullscreen-window; }
-}
+
+// Autostart
+spawn-at-startup "ags" "run"
+spawn-at-startup "wezterm"
+spawn-at-startup "firefox"
+spawn-at-startup "pipewire"
 
 layout {
     gaps 8
     
     border {
         width 2
-        active-color "#7aa2f7"
-        inactive-color "#565f89"
+        active-color "#40ffbf"
+        inactive-color "#595959"
     }
+
+    default-column-width { proportion 0.5; }
     
     focus-ring {
         off
     }
 }
+
+window-rule {
+    // make all windows slightly transparent when unfocused
+    opacity 1.0
+}
+
+window-rule {
+    // no blur for wezterm
+    match app-id="wezterm"
+}
+
+animations {
+    slowdown 0.8
+
+    window-open {
+        duration-ms 200
+        curve "ease-out-expo"
+    }
+
+    window-close {
+        duration-ms 150
+        curve "ease-out-quad"
+    }
+
+    workspace-switch {
+        duration-ms 200
+        curve "ease-out-cubic"
+    }
+}
+
+binds {
+    // Apps
+    Mod+Return { spawn "wezterm"; }
+    Mod+F { spawn "firefox"; }
+    Mod+E { spawn "emacs"; }
+    Mod+D { spawn "dolphin"; }
+    Mod+Space { spawn "fuzzel"; }
+
+    // Window management
+    Mod+Shift+Q { close-window; }
+    Mod+Shift+Escape { quit; }
+    Mod+M { maximize-column; }
+    Mod+Shift+F { fullscreen-window; }
+    //Mod+Ctrl+F { toggle-floating; }
+    
+    // Niri Movement
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+    Mod+0 { focus-workspace 10; }
+    
+    Mod+Shift+1 { move-window-to-workspace 1; }
+    Mod+Shift+2 { move-window-to-workspace 2; }
+    Mod+Shift+3 { move-window-to-workspace 3; }
+    Mod+Shift+4 { move-window-to-workspace 4; }
+    Mod+Shift+5 { move-window-to-workspace 5; }
+    Mod+Shift+6 { move-window-to-workspace 6; }
+    Mod+Shift+7 { move-window-to-workspace 7; }
+    Mod+Shift+8 { move-window-to-workspace 8; }
+    Mod+Shift+9 { move-window-to-workspace 9; }
+    Mod+Shift+0 { move-window-to-workspace 10; }
+    
+    Mod+H { focus-column-left; }
+    Mod+J { focus-window-down; }
+    Mod+K { focus-window-up; }
+    Mod+L { focus-column-right; }
+
+    Mod+Tab { focus-workspace-previous; }
+    Mod+Ctrl+K { focus-workspace-up; }
+    Mod+Ctrl+J { focus-workspace-down; }
+    
+    // Move windows
+    Mod+Shift+H { move-column-left; }
+    Mod+Shift+J { move-window-down; }
+    Mod+Shift+K { move-window-up; }
+    Mod+Shift+L { move-column-right; }
+
+    // Scrolling (Niri-specific - horizontal scroll through columns)
+    Mod+WheelScrollDown { focus-column-right; }
+    Mod+WheelScrollUp { focus-column-left; }
+    Mod+Shift+WheelScrollDown { focus-workspace-down; }
+    Mod+Shift+WheelScrollUp { focus-workspace-up; }
+
+    // Column width adjustment
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Equal { set-column-width "+10%"; }
+
+    // Window height adjustment
+    Mod+Shift+Minus { set-window-height "-10%"; }
+    Mod+Shift+Equal { set-window-height "+10%"; }
+
+    // Consume/expel windows (move window into/out of column)
+    Mod+Comma { consume-window-into-column; }
+    Mod+Period { expel-window-from-column; }
+
+    // Volume controls
+    Mod+Shift+X { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "10%+"; }
+    Mod+Shift+Z { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "10%-"; }
+    Mod+Shift+C { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    Mod+V { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+
+    // Brightness
+    Mod+X { spawn "brightnessctl" "s" "5%+"; }
+    Mod+Z { spawn "brightnessctl" "s" "5%-"; }
+
+    // Media controls (remapped - comma/period used for consume/expel)
+    Mod+P { spawn "playerctl" "play-pause"; }
+    Mod+Ctrl+Period { spawn "playerctl" "next"; }
+    Mod+Ctrl+Comma { spawn "playerctl" "previous"; }
+
+    // Screenshot (using grim + slurp)
+    Print { spawn "grim"; }
+    Mod+Print { spawn "sh" "-c" "grim -g \"$(slurp)\""; }
+
+    // Show all keybinds
+    Mod+Shift+Slash { show-hotkey-overlay; }
+}
+

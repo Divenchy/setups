@@ -11,6 +11,8 @@ end
 -- Define equivalence classes for brackets and quotes, in addition to
 -- the default whitespace group:
 leap.opts.equivalence_classes = { " \t\r\n", "([{", ")]}", "'\"`" }
+leap.opts.vim_opts['go.ignorecase'] = false
+
 
 -- Use the traversal keys to repeat the previous motion without
 -- explicitly invoking Leap:
