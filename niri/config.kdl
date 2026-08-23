@@ -1,3 +1,8 @@
+// env
+environment {
+    XDG_CURRENT_DESKTOP "niri"
+}
+
 // input and monitor
 input {
     keyboard {
@@ -27,7 +32,8 @@ output "eDP-1" {
 spawn-at-startup "ags" "run"
 spawn-at-startup "wezterm"
 spawn-at-startup "firefox"
-spawn-at-startup "pipewire"
+spawn-at-startup "awww-daemon"
+spawn-at-startup "awww" "img" "$HOME/setups/wallpapers/oil_painting.png"
 
 layout {
     gaps 8
