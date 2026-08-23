@@ -1,8 +1,13 @@
-./weomacs/elpa/*
-./weomacs/.cache/
-./weomacs/tree-sitter/
-./weomacs/projects
-./weomacs/snippets/
-./weomacs/eln-cache/
-./weomacs/.lsp-session-v1
-./weomacs/auto-save-list/
+/weomacs/elpa/*
+/weomacs/.cache/*
+/weomacs/tree-sitter/*
+/weomacs/projects
+/weomacs/snippets/*
+/weomacs/eln-cache/*
+/weomacs/.lsp-session-v1
+/weomacs/auto-save-list/*
+
+# Emacs temporary, backup, and auto-save files
+*~
+\#*\#
+.\#*
