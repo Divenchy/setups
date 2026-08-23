@@ -23,6 +23,12 @@ input {
     focus-follows-mouse max-scroll-amount="50%"   // Some auto-scroll
 }
 
+gestures {
+    hot-corners {
+        off
+    }
+}
+
 output "eDP-1" {
     scale 0.9
 }
