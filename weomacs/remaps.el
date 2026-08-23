@@ -1,5 +1,4 @@
 ;;;;;;; Set leader  ;;;;;;;;
-(define-key leader (kbd "h") #'hs-minor-mode)
 
 ;; VTerm ;;
 (global-set-key (kbd "C-c v") 'vterm)
