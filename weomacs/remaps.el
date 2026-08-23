@@ -1,13 +1,9 @@
 ;;;;;;; Set leader  ;;;;;;;;
-(define-prefix-command 'leader)
-(global-set-key (kbd "M-'") 'leader)
-
 (define-key leader (kbd "h") #'hs-minor-mode)
-
-(global-set-key (kbd "C-;") 'repeat)
 
 ;; VTerm ;;
 (global-set-key (kbd "C-c v") 'vterm)
+(global-set-key (kbd "C-c C-y") 'vterm-yank)
 
 ;; Avy ;;
 (global-set-key (kbd "C-,") 'avy-goto-char)
@@ -192,7 +188,7 @@
 (global-set-key (kbd "M-s") #'save-buffer) 
 
 (define-key file-prefix (kbd "f") #'find-file)
-(define-key file-prefix (kbd "r") #'recent-files)
+(define-key file-prefix (kbd "r") #'consult-recent-file)
 (define-key file-prefix (kbd "p") #'project-find-file)
 
 (define-key buffer-prefix (kbd "b") #'consult-buffer)

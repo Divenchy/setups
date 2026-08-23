@@ -41,7 +41,7 @@
    '(cape command-log-mode corfu dap-mode direnv doom-modeline doom-themes ef-themes embark-consult
 	  eshell-git-prompt exunit glsl-mode helpful inf-elixir kind-icon ligature magit marginalia mix
 	  multiple-cursors odin-mode orderless org-bullets powershell projectile rainbow-delimiters
-	  reformatter vertico visual-fill-column vterm yaml-mode yasnippet))
+	  reformatter vertico visual-fill-column vterm yaml-mode yasnippet zig-ts-mode))
  '(package-vc-selected-packages
    '((odin-mode :vc-backend Git :url "https://github.com/mattt-b/odin-mode"))))
 (custom-set-faces

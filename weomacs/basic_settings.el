@@ -26,6 +26,7 @@
 (show-paren-mode 1)
 (global-subword-mode 1)
 (repeat-mode 1)
+(add-to-list 'default-frame-alist '(undecorated . t))
 (setq bookmark-save-flag 1)
 (setq default-directory (concat (getenv "HOME") "/"))
 
